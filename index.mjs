@@ -2,7 +2,9 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import methodOverride from 'method-override';
 
-import bindRoutes from './routes.mjs';
+// import bindRoutes from './routes.mjs';
+import bugsRouter from './routes/bugsRouter.mjs';
+import BugsController from './controllers/bugs.mjs';
 
 // Initialise Express instance
 const app = express();
@@ -17,8 +19,8 @@ app.use(methodOverride('_method'));
 // Expose the files stored in the public folder
 app.use(express.static('public'));
 
-// Bind route definitions to the Express application
-bindRoutes(app);
+const bugsController = new BugsController();
+app.use('/', bugsRouter(bugsController));
 
 // Set Express to listen on the given port
 const PORT = process.env.PORT || 3004;
