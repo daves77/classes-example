@@ -18,6 +18,13 @@ export default function initBugModel(sequelize, DataTypes) {
       allowNull: true,
       type: DataTypes.STRING,
     },
+    featureId: {
+      type: DataTypes.STRING,
+      reference: {
+        model: 'features',
+        key: 'id',
+      },
+    },
     createdAt: {
       allowNull: false,
       type: DataTypes.DATE,
