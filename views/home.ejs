@@ -5,11 +5,60 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Create Bug Form</title>
 </head>
 
 <body>
-  hello world!
+
+  <div>
+    <h1>Create Bug Form</h1>
+    <form action="/bug-form" method="post">
+      <div>
+        <label for="problem">Problem</label>
+        <input id="problem" type="text" name="problem">
+      </div>
+      <div>
+        <label for="error">Error</label>
+        <input id="error" type="text" name="error">
+      </div>
+      <div>
+        <label for="commit">Commit</label>
+        <input id="commit" type="text" name="commit">
+      </div>
+      <div>
+        <label for="feature">Feature</label>
+        <select name="feature" id="features">
+        </select>
+      </div>
+
+      <button type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
+
+
+  <div>
+    <h1>Bug List</h1>
+    <ul id="bugs-list">
+    </ul>
+  </div>
+
+  <div>
+    <h1>Create Feature Form</h1>
+    <form action="/features/new-feature" method="post">
+      <div>
+        <label for="feature">feature</label>
+        <input id="feature" type="text" name="feature">
+      </div>
+      <button>Submit</button>
+    </form>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js"
+    integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="bug-forms.js"></script>
 </body>
 
 </html>

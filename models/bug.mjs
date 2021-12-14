@@ -1,5 +1,5 @@
 export default function initBugModel(sequelize, DataTypes) {
-  return sequelize.define('bugs', {
+  return sequelize.define('bug', {
     id: {
       allowNull: false,
       autoIncrement: true,
@@ -36,6 +36,6 @@ export default function initBugModel(sequelize, DataTypes) {
 
   },
   {
-    underscore: true,
+    underscored: true,
   });
 }

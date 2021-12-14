@@ -3,8 +3,15 @@ import cookieParser from 'cookie-parser';
 import methodOverride from 'method-override';
 
 // import bindRoutes from './routes.mjs';
-import bugsRouter from './routes/bugsRouter.mjs';
+import bugsRouter from './routers/bugsRouter.mjs';
+import featuresRouter from './routers/featuresRouter.mjs';
+import usersRouter from './routers/usersRouter.mjs';
+
 import BugsController from './controllers/bugs.mjs';
+import FeatureController from './controllers/features.mjs';
+import UserController from './controllers/users.mjs';
+
+import db from './models/index.mjs';
 
 // Initialise Express instance
 const app = express();
@@ -19,9 +26,16 @@ app.use(methodOverride('_method'));
 // Expose the files stored in the public folder
 app.use(express.static('public'));
 
-const bugsController = new BugsController();
+const featureController = new FeatureController(db);
+const bugsController = new BugsController(db);
+const userController = new UserController(db);
+
 app.use('/', bugsRouter(bugsController));
+app.use('/features', featuresRouter(featureController));
+app.use('/users', usersRouter(userController));
 
 // Set Express to listen on the given port
-const PORT = process.env.PORT || 3004;
-app.listen(PORT);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`running on port ${PORT}`);
+});

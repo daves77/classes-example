@@ -12,9 +12,9 @@ module.exports = {
     */
 
     const features = [
-      { name: 'navbar' },
-      { name: 'hero section' },
-      { name: 'contact form' },
+      { name: 'navbar', created_at: new Date(), updated_at: new Date() },
+      { name: 'hero section', created_at: new Date(), updated_at: new Date() },
+      { name: 'footer', created_at: new Date(), updated_at: new Date() },
     ];
 
     await queryInterface.bulkInsert('features', features);
